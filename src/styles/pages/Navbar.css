@@ -22,11 +22,11 @@
     align-items: center;
 }
 
-.navbar_list li:nth-last-child(1) {
-    padding: 0.4em;
+.navbar_list>li:nth-last-child(1)>a {
+    padding: 0.4em 0.8em;
 }
 
-.navbar_list li:nth-last-child(1):hover {
+.navbar_list>li:nth-last-child(1):hover>a {
     background-color: rgb(222, 228, 234);
     border-radius: 0.5em;
 }
