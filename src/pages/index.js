@@ -1,4 +1,4 @@
-export * from './PageOne'
-export * from './PageTwo'
-export * from './PageThree'
 export * from './Navbar'
+export * from './Login'
+export * from './Shop'
+export * from './Home'

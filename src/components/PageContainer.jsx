@@ -1,10 +1,9 @@
 import '../styles/components/PageContainer.css'
-export const PageContainer = ({ children, appTitle, backgroundColor }) => {
+export const PageContainer = ({ children, background }) => {
     return (
         <div
-            style={{ backgroundColor: backgroundColor }}
+            style={{ background: background }}
             className="pageContainer">
-            <h1>{appTitle}</h1>
             {children}
         </div>
     )
