@@ -1,0 +1,11 @@
+.form_button {
+    background: linear-gradient(135deg, #1FC496 50%, #189E7A 100%);
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    outline: none;
+    margin-top: 1em;
+    height: 2.5em;
+    width: calc(100% - 4em);
+}

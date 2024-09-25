@@ -1,0 +1,22 @@
+.form_control {
+    display: grid;
+    width: calc(100% - 5em);
+    row-gap: 0.25em;
+}
+
+.form_label {
+    color: #576574;
+    font-weight: 500;
+}
+
+.form_input {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.25em;
+    color: rgb(44, 62, 80);
+    font-size: 1.1em;
+    padding: 0px 0px 0px 0.5em;
+    outline: none;
+    height: 2em;
+    width: calc(100% - 0.5em);
+}

@@ -4,7 +4,7 @@
     position: absolute;
     width: 20em;
     height: 3.4em;
-    top: 5%;
+    top: 3em;
     left: 50%;
     transform: translate(-50%, -50%);
     display: grid;
