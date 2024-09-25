@@ -1,0 +1,22 @@
+.navbar {
+    background-color: aliceblue;
+    border-radius: 0.5rem;
+    position: absolute;
+    width: 20em;
+    height: 3em;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar_list {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-evenly;
+}
