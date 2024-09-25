@@ -1,8 +1,15 @@
-# React + Vite
+# Proyecto final Bootcamp Talento Tech: Desarrollo Web Full Stack
+## _eCommerce Frontend_
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![GitHub Repo stars](https://img.shields.io/github/stars/georgerozo18/e_commerce_frontend.svg) ![](https://img.shields.io/github/forks/georgerozo18/e_commerce_frontend.svg) ![Express](https://img.shields.io/badge/React-^18.3.1-blue?logo=react) 
 
-Currently, two official plugins are available:
+## Instalación
+Este proyecto requiere [Node.js](https://nodejs.org/) v20+ para funcionar.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Instala las dependencias y devDependencies e inicia el servidor.
+
+```sh
+cd e_commerce_fronted
+npm install
+npm run dev
+```
