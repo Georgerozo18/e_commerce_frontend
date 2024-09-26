@@ -1,5 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { set_is_flipped, set_sign_in_username, set_sign_in_password } from '../../redux/slices'
+import {
+    set_is_flipped,
+    set_sign_in_username,
+    set_sign_in_password
+} from '../../redux/slices'
+import { signin_user_thunk } from '../../redux/thunks/login/login_thunk'
 import {
     FormContainer,
     TitleContainer,
@@ -16,7 +21,9 @@ export const FormSignIn = () => {
 
     const {
         sign_in_username,
-        sign_in_password
+        sign_in_password,
+        is_loading,
+        signin_error
     } = useSelector(state => state.login_slice)
 
     const toggleSign = () => {
@@ -25,6 +32,10 @@ export const FormSignIn = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        dispatch(signin_user_thunk({
+            username: sign_in_username,
+            password: sign_in_password
+        }))
     }
 
     return (
@@ -46,7 +57,8 @@ export const FormSignIn = () => {
                 placeholder='Enter your password'
                 value={sign_in_password}
                 onChange={event => dispatch(set_sign_in_password(event.target.value))} />
-            <FormButton type='submit' textValue='Sign in' />
+            <FormButton type='submit' textValue={is_loading ? 'Signing in...' : 'Sign in'} />
+            {signin_error && <p className="error_message">{signin_error}</p>}
             <FormSpan
                 text="don't have an account? "
                 strong_text='Create account'
