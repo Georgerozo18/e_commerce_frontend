@@ -1,11 +1,10 @@
 import '../../styles/components/FormButton.css'
 
-export const FormButton = ({ type, textValue, handleClick }) => {
+export const FormButton = ({ type, textValue }) => {
     return (
         <button
             type={type}
-            className='form_button'
-            onClick={handleClick}>
+            className='form_button'>
             {textValue}
         </button>
     )

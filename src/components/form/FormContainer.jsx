@@ -1,8 +1,8 @@
 import '../../styles/components/FormContainer.css'
 
-export const FormContainer = ({ children }) => {
+export const FormContainer = ({ children, handleSubmit }) => {
     return (
-        <form className="form_container">
+        <form className="form_container" onSubmit={handleSubmit}>
             {children}
         </form>
     )
