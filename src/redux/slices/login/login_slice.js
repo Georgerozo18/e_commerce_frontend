@@ -7,7 +7,8 @@ const initialState = {
     sign_in_password:'',
     is_loading:false,
     signin_error:null,
-    user:null
+    user:null,
+    is_authenticated:false
 }
 
 export const login_slice = createSlice({
@@ -36,10 +37,12 @@ export const login_slice = createSlice({
             .addCase(signin_user_thunk.fulfilled, (state, action)=>{
                 state.is_loading = false
                 state.user = action.payload.user
+                state.is_authenticated = true
             })
             .addCase(signin_user_thunk.rejected, (state, action)=>{
                 state.is_loading = false
                 state.signin_error = action.payload
+                state.is_authenticated = false
             })
             .addCase(check_user_session.pending, (state) => {
                 state.is_loading = true
@@ -48,10 +51,12 @@ export const login_slice = createSlice({
             .addCase(check_user_session.fulfilled, (state, action) => {
                 state.is_loading = false
                 state.user = action.payload.user
+                state.is_authenticated = true
             })
             .addCase(check_user_session.rejected, (state, action) => {
                 state.is_loading = false
                 state.signin_error = action.payload
+                state.is_authenticated = false
             })
     }
 })

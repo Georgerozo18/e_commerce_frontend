@@ -1,15 +1,33 @@
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { PageContainer } from '../components/PageContainer'
 import { FormCard, FormSignUp, FormSignIn } from '../components/form'
 
+
 export const Login = () => {
+    const { user, is_authenticated } = useSelector(state => state.login_slice)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (is_authenticated) {
+            navigate('/profile')
+        }
+    }, [is_authenticated, navigate])
 
     return (
         <PageContainer
             appTitle={'Login'}
             background={'radial-gradient(circle, rgb(250, 188, 46) 50%, rgb(204, 139, 30) 100%)'}>
-            <FormCard
-                front_children={<FormSignIn />}
-                back_children={<FormSignUp />} />
+            {
+                is_authenticated ? (
+                    <p>Redirecting to profile...</p>
+                ) : (
+                    <FormCard
+                        front_children={<FormSignIn />}
+                        back_children={<FormSignUp />} />
+                )
+            }
         </PageContainer>
     )
 }
