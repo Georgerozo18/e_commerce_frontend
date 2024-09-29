@@ -8,7 +8,7 @@ import {
     FormSpan,
     FormButton,
     FormImage,
-} from '../form'
+} from '.'
 import icon from '../../assets/images/form_icon.png'
 
 export const FormSignUp = () => {

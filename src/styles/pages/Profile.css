@@ -1,0 +1,23 @@
+.profile_page_container {
+    padding-top: 8em;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+}
+
+.profile_button {
+    padding: 0.4em 0.8em;
+    background-color: rgb(222, 228, 234);
+    color: #576574;
+    border-radius: 0.5em;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    font-weight: 600;
+    width: min-content;
+    height: min-content;
+}
+
+.profile_button:hover {
+    background-color: rgb(242, 248, 254);
+}

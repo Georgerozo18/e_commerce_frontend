@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { PageContainer } from '../components/PageContainer'
-import { FormCard, FormSignUp, FormSignIn } from '../components/form'
+import { FormCard, FormSignUp, FormSignIn } from '../components/login'
 
 
 export const Login = () => {
-    const { user, is_authenticated } = useSelector(state => state.login_slice)
+    const { is_authenticated } = useSelector(state => state.login_slice)
     const navigate = useNavigate()
 
     useEffect(() => {

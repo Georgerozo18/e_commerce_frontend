@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { signin_user_thunk, check_user_session } from "../../thunks/login/login_thunk"
+import { 
+    signin_user_thunk, 
+    check_user_session, 
+    signout_user_thunk 
+} from "../../thunks/login/login_thunk"
 
 const initialState = {
     is_flipped: false,
@@ -57,6 +61,18 @@ export const login_slice = createSlice({
                 state.is_loading = false
                 state.signin_error = action.payload
                 state.is_authenticated = false
+            })
+            .addCase(signout_user_thunk.pending, (state)=>{
+                state.is_loading = true
+            })
+            .addCase(signout_user_thunk.fulfilled, (state)=>{
+                state.is_loading = false
+                state.is_authenticated = false
+                state.user = null
+            })
+            .addCase(signout_user_thunk.rejected, (state, action)=>{
+                state.is_loading = false
+                state.signin_error = action.payload
             })
     }
 })
