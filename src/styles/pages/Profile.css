@@ -6,16 +6,16 @@
 }
 
 .profile_button {
-    padding: 0.4em 0.8em;
     background-color: rgb(222, 228, 234);
     color: #576574;
     border-radius: 0.5em;
     border: none;
-    font-size: 1.1em;
+    font-size: 0.9em;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     width: min-content;
     height: min-content;
+    padding: 0.6em 0.8em;
 }
 
 .profile_button:hover {

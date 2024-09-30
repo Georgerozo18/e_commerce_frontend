@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { PageContainer } from '../components/PageContainer'
 import { FormCard, FormSignUp, FormSignIn } from '../components/login'
 
-
 export const Login = () => {
     const { is_authenticated } = useSelector(state => state.login_slice)
     const navigate = useNavigate()

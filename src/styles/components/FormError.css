@@ -3,3 +3,9 @@
     position: absolute;
     bottom: 6.8em;
 }
+
+.success_message {
+    color: rgb(77, 205, 101);
+    position: absolute;
+    bottom: 7.8em;
+}
