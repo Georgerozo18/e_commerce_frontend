@@ -1,0 +1,32 @@
+.navbar {
+    background-color: aliceblue;
+    border-radius: 0.5rem;
+    position: absolute;
+    width: 20em;
+    height: 3.4em;
+    top: 3em;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar_list {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar_list>li:nth-last-child(1)>a {
+    padding: 0.4em 0.8em;
+}
+
+.navbar_list>li:nth-last-child(1):hover>a {
+    background-color: rgb(222, 228, 234);
+    border-radius: 0.5em;
+}

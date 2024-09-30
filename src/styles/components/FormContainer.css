@@ -1,0 +1,15 @@
+.form_container {
+    background-color: #f0f0f0;
+    border-radius: 0.5rem;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    row-gap: 1em;
+    width: 32em;
+    height: 28em;
+}
+
+.form_title_container {
+    display: grid;
+    justify-items: center;
+}

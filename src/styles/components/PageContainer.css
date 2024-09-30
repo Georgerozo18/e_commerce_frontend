@@ -1,0 +1,18 @@
+.page_container {
+    width: calc(100vw - 3em);
+    height: calc(100vh - 6.5em);
+    padding-top: 5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+.page_container>p {
+    font-size: 1.4em;
+    margin: 0.1em 0 0.5em 0em;
+}
+
+.page_center {
+    display: grid;
+    place-content: center;
+}
