@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "serve dist -s -n -L $PORT"
+    "start": "serve dist -s -n -L -p $PORT"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.4",
