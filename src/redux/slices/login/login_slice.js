@@ -3,7 +3,7 @@ import {
     signin_user_thunk, 
     check_user_session, 
     signout_user_thunk 
-} from "../../thunks/login/login_thunk"
+} from "../../thunks/login_thunk"
 
 const initialState = {
     is_flipped: false,

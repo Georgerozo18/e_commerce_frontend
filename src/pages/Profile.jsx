@@ -3,7 +3,7 @@ import { PageContainer } from '../components/PageContainer'
 import { ProfileButton, ProfileTitle } from '../components/profile/'
 
 import '../styles/pages/Profile.css'
-import { signout_user_thunk } from '../redux/thunks/login/login_thunk'
+import { signout_user_thunk } from '../redux/thunks/login_thunk'
 
 export const Profile = () => {
     const {

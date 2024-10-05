@@ -4,7 +4,7 @@ import {
     set_sign_in_username,
     set_sign_in_password
 } from '../../redux/slices'
-import { signin_user_thunk } from '../../redux/thunks/login/login_thunk'
+import { signin_user_thunk } from '../../redux/thunks/login_thunk'
 import {
     FormContainer,
     TitleContainer,

@@ -6,7 +6,7 @@ export const signup_user_thunk = createAsyncThunk(
     'signup_slice/signup_user',
     async(userData, { rejectWithValue })=>{
         try{
-            const response = await fetch(`${apiUrl}/auth/sign_up`, {
+            const response = await fetch(`${apiUrl}/auth/sign_up/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData),

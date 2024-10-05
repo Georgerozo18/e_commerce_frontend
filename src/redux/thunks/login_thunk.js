@@ -1,6 +1,6 @@
-const apiUrl = import.meta.env.VITE_API_URL
 import {createAsyncThunk} from '@reduxjs/toolkit'
-import { set_logout } from '../../slices/login/login_slice'
+import { set_logout } from '../slices/login/login_slice'
+const apiUrl = import.meta.env.VITE_API_URL
 
 export const signin_user_thunk = createAsyncThunk(
     'login_slice/login_user',
@@ -37,7 +37,7 @@ export const check_user_session = createAsyncThunk(
     'login_slice/check_user_session',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await fetch(`${apiUrl}/auth/validate`, {
+            const response = await fetch(`${apiUrl}/auth/validate/`, {
             method: "GET",
             credentials: "include",
         })

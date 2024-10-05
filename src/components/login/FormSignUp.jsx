@@ -10,7 +10,7 @@ import {
     FormButton,
 } from '.'
 
-import { signup_user_thunk } from '../../redux/thunks/signup/signup_thunk'
+import { signup_user_thunk } from '../../redux/thunks/signup_thunk'
 
 export const FormSignUp = () => {
     const dispatch = useDispatch()
