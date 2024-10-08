@@ -5,11 +5,12 @@ const apiUrl = import.meta.env.VITE_API_URL
 export const signin_user_thunk = createAsyncThunk(
     'login_slice/login_user',
     async(credentials, {rejectWithValue})=>{
+        const { username, password, authRoute } = credentials
         try{
-            const response = await fetch(`${apiUrl}/auth/login`,{
+            const response = await fetch(`${apiUrl}${authRoute}`,{
                 method:'POST',
                 headers:{ 'Content-Type':'application/json' },
-                body: JSON.stringify(credentials),
+                body: JSON.stringify({ username, password }),
                 credentials: 'include'
             })
 

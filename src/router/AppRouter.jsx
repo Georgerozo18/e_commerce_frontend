@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { Login, AdminLogin, Home, Shop, Profile, Dashboard } from '../pages'
-import { ProtectedRoute } from './ProtectedRoute'
 import { SecretSequence } from '../components/SecretSequence'
+import { AdminProtectedRoute, ProtectedRoute } from './'
 
 export const AppRouter = () => {
 
@@ -11,7 +11,7 @@ export const AppRouter = () => {
             <SecretSequence sequence={secretSequence} />
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/dashboard' element={<AdminProtectedRoute><Dashboard /></AdminProtectedRoute>} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/login_admin' element={<AdminLogin />} />
                 <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
