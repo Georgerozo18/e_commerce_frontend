@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { PageContainer } from '../components/PageContainer'
-import { animated, useSprings, useSpring } from '@react-spring/web'
+import { animated, useSprings } from '@react-spring/web'
 import '../styles/pages/Home.css'
 
 export const Home = () => {
