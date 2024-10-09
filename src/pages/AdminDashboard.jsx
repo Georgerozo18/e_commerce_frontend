@@ -1,11 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { PageContainer } from '../components/PageContainer'
-import { ProfileButton, ProfileTitle } from '../components/profile/'
-
-import '../styles/pages/Profile.css'
+import { useDispatch, useSelector } from "react-redux"
+import { PageContainer } from "../components/PageContainer"
 import { signout_user_thunk } from '../redux/thunks/login_thunk'
+import { ProfileButton, ProfileTitle } from "../components/profile"
 
-export const Profile = () => {
+export const AdminDashboard = () => {
     const {
         user,
         is_authenticated,
@@ -18,7 +16,6 @@ export const Profile = () => {
     }
 
     if (is_loading) return <p>Verifying session...</p>
-
     return is_authenticated && user ? (
         <PageContainer
             className='profile_page_container'

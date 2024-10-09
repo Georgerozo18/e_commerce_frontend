@@ -16,8 +16,8 @@ export const SecretSequence = ({ sequence }) => {
             if (inputSequence.join('') === sequence.join('')) {
                 // Secuencia correcta
                 hasMatched.current = true
-                if (location.pathname !== '/login_admin') {
-                    navigate('/login_admin')
+                if (location.pathname !== '/admin_login') {
+                    navigate('/admin_login')
                 }
             }
             // Reiniciar la secuencia siempre, tanto si es correcta o incorrecta
@@ -38,8 +38,8 @@ export const SecretSequence = ({ sequence }) => {
     }, [inputSequence]) // Escuchar cambios en la secuencia
 
     useEffect(() => {
-        // Siempre que la ruta no sea /login_admin, reiniciar la secuencia
-        if (location.pathname !== '/login_admin') {
+        // Siempre que la ruta no sea /admin_login, reiniciar la secuencia
+        if (location.pathname !== '/admin_login') {
             resetSequence()
         }
     }, [location.pathname])

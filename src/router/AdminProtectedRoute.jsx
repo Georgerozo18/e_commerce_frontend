@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
-export const AdminProtectedRoute = ({ children }) => {
+export const AdminProtectedRoute = () => {
     const { user, is_authenticated } = useSelector((state) => state.login_slice)
-    // Verificar si el usuario está autenticado y tiene rol de admin
+
     if (!is_authenticated || user?.role !== 'admin') {
         return <Navigate to="/" />
     }
-
-    return children
+    return <Outlet />
 }

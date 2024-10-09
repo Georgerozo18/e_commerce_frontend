@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { check_user_session } from './redux/thunks/login_thunk'
-import { BrowserRouter } from 'react-router-dom'
 import { AppRouter } from './router'
 import { Navbar } from './pages/'
 import { fetch_products_thunk } from './redux/thunks/product_thunk'
@@ -11,7 +10,7 @@ export const App = () => {
   const { products } = useSelector((state) => state.product_slice)
 
   useEffect(() => {
-    // Al cargar la aplicación, verifica si el usuario tiene una sesión activa
+    // Verifica si hay una sesión activa
     dispatch(check_user_session())
   }, [dispatch])
 
@@ -23,10 +22,9 @@ export const App = () => {
   }, [dispatch, products])
 
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
-      <AppRouter>
-      </AppRouter>
-    </BrowserRouter>
+      <AppRouter />
+    </>
   )
 }

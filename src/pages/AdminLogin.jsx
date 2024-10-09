@@ -10,7 +10,7 @@ export const AdminLogin = () => {
 
     useEffect(() => {
         if (is_authenticated) {
-            navigate('/dashboard')
+            navigate('/admin/dashboard')
         }
     }, [is_authenticated, navigate])
 

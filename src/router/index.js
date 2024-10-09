@@ -1,3 +1,5 @@
 export * from './AppRouter.jsx'
 export * from './AdminProtectedRoute.jsx'
+export * from './AdminRouter.jsx'
+export * from './UserRouter.jsx'
 export * from './ProtectedRoute'
