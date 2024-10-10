@@ -22,11 +22,15 @@
     align-items: center;
 }
 
-.navbar_list>li:nth-last-child(1)>a {
+.navbar_logout_button {
+    font-weight: 500;
+    color: #576574;
+    text-decoration: inherit;
+    cursor: pointer;
     padding: 0.4em 0.8em;
 }
 
-.navbar_list>li:nth-last-child(1):hover>a {
+.navbar_logout_button:hover {
     background-color: rgb(222, 228, 234);
     border-radius: 0.5em;
 }
