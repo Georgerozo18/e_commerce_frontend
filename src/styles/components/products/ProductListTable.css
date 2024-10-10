@@ -1,0 +1,91 @@
+/* 1. Table Container */
+.table_container {
+    overflow-y: auto;
+    overflow-x: auto;
+    width: fit-content;
+    max-width: 100%;
+    height: fit-content;
+    max-height: 90%;
+    border-radius: 0.5em;
+    margin-top: 1em;
+    background-color: rgb(225, 234, 242);
+}
+
+.table_container::-webkit-scrollbar {
+    background-color: rgb(211, 211, 211);
+    width: 10px;
+    height: 10px;
+}
+
+.table_container::-webkit-scrollbar-thumb {
+    background-color: rgb(59, 59, 59);
+    border-radius: 20px;
+}
+
+.table_container::-webkit-scrollbar-track {
+    background-color: rgb(211, 211, 211);
+}
+
+/* 2. Product Table  */
+.product_table {
+    display: table;
+    border-collapse: collapse;
+    cursor: default;
+}
+
+.product_table td,
+.product_table th {
+    padding: 0.5em;
+    white-space: nowrap;
+}
+
+.product_table td {
+    border-right: 1px solid #EAEAEC;
+}
+
+/* 3. Product Table Header  */
+.product_table_header {
+    background-color: aliceblue;
+    color: #576574;
+    text-align: left;
+    position: sticky;
+    top: -0.5px;
+    z-index: 4;
+    overflow: hidden;
+}
+
+/* 4. Product Table Body */
+.product_table_body {
+    font-size: 0.75em;
+    height: 100%;
+}
+
+.product_table_body>tr {
+    line-height: 30px;
+    border-bottom: 1px solid #EAEAEC;
+    background-color: white;
+    font-weight: 500;
+    color: #576574;
+}
+
+.product_table_body>tr:hover {
+    z-index: 3;
+    position: relative;
+    transition: all 0.8s ease;
+    background-color: #e6e6e6;
+}
+
+/* Responsive section */
+@media (min-width: 1920px) and (max-width: 2560px) {}
+
+@media (min-width: 1600px) and (max-width: 1920px) {}
+
+@media (min-width: 1440px) and (max-width: 1600px) {}
+
+@media (min-width: 1366px) and (max-width: 1460px) {}
+
+@media (min-width: 1280px) and (max-width: 1366px) {}
+
+@media (min-width: 1024px) and (max-width: 1280px) {}
+
+@media (max-width: 1024px) {}

@@ -12,7 +12,7 @@ export const AdminDashboard = () => {
     if (is_loading) return <p>Verifying session...</p>
     return is_authenticated && user ? (
         <PageContainer
-            className='profile_page_container'
+            className='page_container'
             background={'radial-gradient(circle, rgb(0 180 252) 30%, rgb(0 91 197) 100%)'}>
             <ProfileTitle user={user.fullname} />
         </PageContainer>
