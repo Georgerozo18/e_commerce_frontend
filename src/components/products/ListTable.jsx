@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import '../../styles/components/products/ProductListTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faEdit, faTrash, faCircleHalfStroke, faAdd, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { delete_product_thunk } from '../../redux/thunks/product_thunk'
 
 export const ListTable = ({ onAction }) => {
@@ -40,7 +40,7 @@ export const ListTable = ({ onAction }) => {
                                 <button
                                     className="icon_button view_button"
                                     onClick={() => onAction('create')}>
-                                    <FontAwesomeIcon icon={faEye} />
+                                    <FontAwesomeIcon icon={faCirclePlus} />
                                 </button>
                                 <button
                                     className="icon_button edit_button"
