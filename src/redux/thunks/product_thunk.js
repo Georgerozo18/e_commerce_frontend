@@ -18,3 +18,24 @@ export const fetch_products_thunk = createAsyncThunk(
         }
     }
 )
+
+export const delete_product_thunk = createAsyncThunk(
+    'products/delete_product',
+    async(productId, {rejectWithValue})=>{
+        try {
+            const response = await fetch(`${apiUrl}/products/${productId}`, {
+                method: 'DELETE',
+                credentials:'include'
+            })
+            const data = await response.json()
+
+            if (!response.ok) {
+                return rejectWithValue(data.message || 'Failed to delete product')
+            }
+
+            return productId
+        } catch (error) {
+            return rejectWithValue(error.message || 'An error occurred')
+        }
+    }
+)

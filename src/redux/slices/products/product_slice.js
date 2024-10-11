@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetch_products_thunk } from '../../thunks/product_thunk'
+import { fetch_products_thunk, delete_product_thunk  } from '../../thunks/product_thunk'
 
 const initialState = {
     products: [],
@@ -24,6 +24,11 @@ export const product_slice = createSlice({
             .addCase(fetch_products_thunk.rejected, (state, action) => {
                 state.is_loading = false
                 state.error = action.payload
+            })
+            .addCase(delete_product_thunk.fulfilled, (state, action) =>{
+                state.products = state.products.filter(
+                    (product) => product._id !== action.payload
+                )
             })
     }
 })
