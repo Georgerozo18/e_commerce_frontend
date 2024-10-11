@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { delete_product_thunk } from '../../redux/thunks/product_thunk'
 
-export const ProductListTable = () => {
+export const ListTable = ({ onAction }) => {
     const dispatch = useDispatch()
     const { products } = useSelector((state) => state.product_slice)
 
@@ -32,15 +32,19 @@ export const ProductListTable = () => {
                         <tr key={index}>
                             <td>{product._id}</td>
                             <td>{product.name}</td>
-                            <td>{product.price}</td>
+                            <td>${product.price}</td>
                             <td>{product.stock}</td>
                             <td>{product.category.name}</td>
                             <td>{product.description}</td>
                             <td className='icon_container'>
-                                <button className="icon_button view_button">
+                                <button
+                                    className="icon_button view_button"
+                                    onClick={() => onAction('create')}>
                                     <FontAwesomeIcon icon={faEye} />
                                 </button>
-                                <button className="icon_button edit_button">
+                                <button
+                                    className="icon_button edit_button"
+                                    onClick={() => onAction('edit')}>
                                     <FontAwesomeIcon icon={faEdit} />
                                 </button>
                                 <button
