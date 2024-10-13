@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { PageContainer } from '../components/PageContainer'
-import { FormCard, FormSignIn } from '../components/login'
+import { FormCard, FormSignIn } from '../components/form'
 
 export const AdminLogin = () => {
     const { is_authenticated } = useSelector(state => state.login_slice)

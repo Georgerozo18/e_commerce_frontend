@@ -1,3 +1,13 @@
+/* 0. Procuct List */
+.product_list_container {
+    display: flex;
+    justify-items: start;
+    align-items: start;
+    height: calc(100% - 3em);
+    flex-direction: column;
+    padding-top: 1em;
+}
+
 /* 1. Table Container */
 .table_container {
     overflow-y: auto;
@@ -95,8 +105,11 @@
     font-size: 1.2em;
 }
 
-.view_button {
+.create_button {
     color: #7ab317;
+    background-color: aliceblue;
+    padding: 0.5em;
+    border-radius: 0.5em;
 }
 
 .edit_button {
@@ -108,7 +121,7 @@
 }
 
 .icon_button:hover {
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 /* Responsive section */

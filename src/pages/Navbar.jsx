@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { signout_user_thunk } from '../redux/thunks/login_thunk'
 import '../styles/pages/Navbar.css'
+import { set_current_view } from '../redux/slices'
 
 export const Navbar = () => {
     const { is_authenticated, user } = useSelector(state => state.login_slice)
@@ -14,7 +15,11 @@ export const Navbar = () => {
     // Si el usuario es un administrador, mostrar solo las rutas de admin
     const adminNavItems = [
         { title: 'Dashboard', navigateTo: '/admin/dashboard' },
-        { title: 'Products', navigateTo: '/admin/products' },
+        {
+            title: 'Products',
+            navigateTo: '/admin/products',
+            onClick: () => dispatch(set_current_view('list'))
+        },
     ]
 
     // Si el usuario es normal o no está autenticado, mostrar rutas estándar
@@ -33,7 +38,10 @@ export const Navbar = () => {
             <ul className='navbar_list'>
                 {navItems.map((item, index) => (
                     <li key={index}>
-                        <NavLink to={item.navigateTo} replace>
+                        <NavLink
+                            to={item.navigateTo}
+                            replace
+                            onClick={item.onClick ? item.onClick : null}>
                             {item.title}
                         </NavLink>
                     </li>

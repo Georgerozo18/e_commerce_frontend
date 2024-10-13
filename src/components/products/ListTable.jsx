@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import '../../styles/components/products/ProductListTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEdit, faTrash, faCircleHalfStroke, faAdd, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { delete_product_thunk } from '../../redux/thunks/product_thunk'
 
 export const ListTable = ({ onAction }) => {
@@ -14,49 +14,51 @@ export const ListTable = ({ onAction }) => {
         }
     }
     return (
-        <div className="table_container">
-            <table className="product_table">
-                <thead className="product_table_header">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody className="product_table_body">
-                    {products.map((product, index) => (
-                        <tr key={index}>
-                            <td>{product._id}</td>
-                            <td>{product.name}</td>
-                            <td>${product.price}</td>
-                            <td>{product.stock}</td>
-                            <td>{product.category.name}</td>
-                            <td>{product.description}</td>
-                            <td className='icon_container'>
-                                <button
-                                    className="icon_button view_button"
-                                    onClick={() => onAction('create')}>
-                                    <FontAwesomeIcon icon={faCirclePlus} />
-                                </button>
-                                <button
-                                    className="icon_button edit_button"
-                                    onClick={() => onAction('edit')}>
-                                    <FontAwesomeIcon icon={faEdit} />
-                                </button>
-                                <button
-                                    className="icon_button delete_button"
-                                    onClick={() => handleDelete(product._id)}>
-                                    <FontAwesomeIcon icon={faTrash} />
-                                </button>
-                            </td>
+        <div className='product_list_container'>
+            <button
+                className="icon_button create_button"
+                onClick={() => onAction('create')} >
+                <FontAwesomeIcon icon={faCirclePlus} /> Create Product
+            </button>
+            <div className="table_container">
+                <table className="product_table">
+                    <thead className="product_table_header">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Action</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody className="product_table_body">
+                        {products.map((product, index) => (
+                            <tr key={index}>
+                                <td>{product._id}</td>
+                                <td>{product.name}</td>
+                                <td>${product.price}</td>
+                                <td>{product.stock}</td>
+                                <td>{product.category ? product.category.name : 'Category not available'}</td>
+                                <td>{product.description}</td>
+                                <td className='icon_container'>
+                                    <button
+                                        className="icon_button edit_button"
+                                        onClick={() => onAction('edit')}>
+                                        <FontAwesomeIcon icon={faEdit} />
+                                    </button>
+                                    <button
+                                        className="icon_button delete_button"
+                                        onClick={() => handleDelete(product._id)}>
+                                        <FontAwesomeIcon icon={faTrash} />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }
