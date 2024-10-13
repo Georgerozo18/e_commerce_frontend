@@ -3,6 +3,7 @@ import '../../styles/components/products/ProductListTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { delete_product_thunk } from '../../redux/thunks/product_thunk'
+import { set_current_product } from '../../redux/slices/products/product_slice'
 
 export const ListTable = ({ onAction }) => {
     const dispatch = useDispatch()
@@ -13,6 +14,12 @@ export const ListTable = ({ onAction }) => {
             dispatch(delete_product_thunk(productId))
         }
     }
+
+    const handleEdit = (product) => {
+        dispatch(set_current_product(product))
+        onAction('edit')
+    }
+
     return (
         <div className='product_list_container'>
             <button
@@ -45,7 +52,7 @@ export const ListTable = ({ onAction }) => {
                                 <td className='icon_container'>
                                     <button
                                         className="icon_button edit_button"
-                                        onClick={() => onAction('edit')}>
+                                        onClick={() => handleEdit(product)}>
                                         <FontAwesomeIcon icon={faEdit} />
                                     </button>
                                     <button

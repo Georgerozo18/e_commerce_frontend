@@ -44,6 +44,31 @@ export const create_products_thunk = createAsyncThunk(
     }
 )
 
+export const update_product_thunk = createAsyncThunk(
+    'products/update_product',
+    async (productData, { rejectWithValue, fulfillWithValue }) => {
+        try {
+            const response = await fetch(`${apiUrl}/products/${productData._id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(productData),
+                credentials: 'include'
+            })
+            const data = await response.json()
+
+            if (!response.ok) {
+                return rejectWithValue(data.message || 'Failed to update product')
+            }
+
+            return fulfillWithValue(data) // Devuelve el producto actualizado
+        } catch (error) {
+            return rejectWithValue(error.message || 'An error occurred')
+        }
+    }
+)
+
 export const delete_product_thunk = createAsyncThunk(
     'products/delete_product',
     async(productId, {rejectWithValue})=>{

@@ -59,6 +59,7 @@ export const Create = () => {
             alert('All fields are required.')
         }
     }
+
     // Limpiar el formulario y redirigir cuando el producto se haya creado
     useEffect(() => {
         if (create_success) {
@@ -73,6 +74,7 @@ export const Create = () => {
             dispatch(reset_create_success())
         }
     }, [create_success, dispatch])
+
     // Buscar el nombre de la categoría en base al ID seleccionado
     const selectedCategory = categories.find(cat => cat._id === productData.category)
 
@@ -117,14 +119,13 @@ export const Create = () => {
                 <FormButton textValue='Create Product' />
             </FormContainer>
 
-            {/* Previsualización del producto */}
             <div className="preview_product">
                 <h3>Product Preview</h3>
-                <p><strong>Name:</strong> {productData.name || 'N/A'}</p>
-                <p><strong>Description:</strong> {productData.description || 'N/A'}</p>
-                <p><strong>Price:</strong> {productData.price ? `$${productData.price}` : 'N/A'}</p>
+                <p><strong>Name:</strong> {productData.name || 'N/A'} </p>
+                <p><strong>Description:</strong> {productData.description || 'N/A'} </p>
+                <p><strong>Price:</strong> {productData.price ? `$${productData.price}` : 'N/A'} </p>
                 <p><strong>Stock:</strong> {productData.stock || 'N/A'}</p>
-                <p><strong>Category ID:</strong> {selectedCategory ? selectedCategory.name : 'N/A'}</p>
+                <p><strong>Category:</strong> {selectedCategory ? selectedCategory.name : 'N/A'} </p>
             </div>
         </div>
     )

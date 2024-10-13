@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { signout_user_thunk } from '../redux/thunks/login_thunk'
 import '../styles/pages/Navbar.css'
-import { set_current_view } from '../redux/slices'
+import { reset_current_product, set_current_view } from '../redux/slices'
 
 export const Navbar = () => {
     const { is_authenticated, user } = useSelector(state => state.login_slice)
@@ -18,7 +18,10 @@ export const Navbar = () => {
         {
             title: 'Products',
             navigateTo: '/admin/products',
-            onClick: () => dispatch(set_current_view('list'))
+            onClick: () =>
+                dispatch(set_current_view('list'),
+                    dispatch(reset_current_product())
+                )
         },
     ]
 
