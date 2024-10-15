@@ -2,8 +2,11 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { Suspense } from 'react'
 import { useLoader } from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrthographicCamera } from '@react-three/drei'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+
+
+
 
 const Model = ({ modelUrl }) => {
     const gltf = useLoader(GLTFLoader, modelUrl)
@@ -11,6 +14,7 @@ const Model = ({ modelUrl }) => {
 }
 
 export const Model3D = ({ modelUrl }) => {
+
     return (
         <Canvas style={{ width: '100%', height: '400px' }}>
             <OrthographicCamera
@@ -20,8 +24,8 @@ export const Model3D = ({ modelUrl }) => {
                 near={0.5}
                 far={100}
             />
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
+            <ambientLight intensity={1} />
+            <pointLight position={[5, 2, 6]} intensity={400} />
             <Suspense fallback={null}>
                 <Model modelUrl={modelUrl} />
             </Suspense>
