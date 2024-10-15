@@ -48,7 +48,7 @@ export const ListTable = ({ onAction }) => {
                                 <td>${product.price}</td>
                                 <td>{product.stock}</td>
                                 <td>{product.category ? product.category.name : 'Category not available'}</td>
-                                <td>{product.description}</td>
+                                <td className="product_table_description">{product.description}</td>
                                 <td className='icon_container'>
                                     <button
                                         className="icon_button edit_button"

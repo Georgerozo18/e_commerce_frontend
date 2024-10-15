@@ -1,13 +1,10 @@
-import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { PageContainer } from '../components/PageContainer'
-import { animated, useSprings } from '@react-spring/web'
+import { useSprings } from '@react-spring/web'
 import '../styles/pages/Home.css'
+import { MasonryGrid } from '../components/products/Cards'
 
 export const Home = () => {
-    // Estado para el hover
-    const [hoveredIndex, setHoveredIndex] = useState(null)
-
     const { products, is_loading, error } = useSelector((state) => state.product_slice)
 
     // Animación de los productos
@@ -35,30 +32,7 @@ export const Home = () => {
                     is_loading ? (<p>Loading products...</p>)
                         : error ? (<p>Error: {error}</p>)
                             : products.length > 0 ? (
-                                <div className='masonry-grid'>
-                                    {products.map((product, index) => {
-                                        const isHovered = hoveredIndex === index
-
-                                        return (
-                                            <animated.div
-                                                key={product._id}
-                                                style={{
-                                                    ...springStyles[index],
-                                                    transform: isHovered ? 'scale(1.05)' : 'scale(1)',
-                                                    zIndex: isHovered ? 1 : 0,
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                className="masonry-item"
-                                                onMouseEnter={() => setHoveredIndex(index)}
-                                                onMouseLeave={() => setHoveredIndex(null)}
-                                            >
-                                                <h3>{product.name}</h3>
-                                                <p>{product.description}</p>
-                                                <p>Category: {product.category.name}</p>
-                                            </animated.div>
-                                        )
-                                    })}
-                                </div>
+                                <MasonryGrid products={products} springStyles={springStyles} />
                             ) : (<p>No products available</p>)
                 }
             </div>
