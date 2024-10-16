@@ -1,14 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetch_products_thunk, delete_product_thunk, create_products_thunk, update_product_thunk  } from '../../thunks/product_thunk'
+import { fetch_products_thunk, delete_product_thunk, create_products_thunk, update_product_thunk, upload_image_thunk, upload_model_thunk  } from '../../thunks/product_thunk'
 
 const initialState = {
     products: [],
     is_loading: false,
     create_success: false,
     update_success: false,
+    upload_image_success: false, 
+    upload_model_success: false, 
     current_view: 'list',
     error: null,
-    current_product: null
+    current_product: null,
+    created_product: null
 }
 
 export const product_slice = createSlice({
@@ -16,11 +19,18 @@ export const product_slice = createSlice({
     initialState,
     reducers:{
         reset_create_success:(state)=>{
-            state.create_success = false
+            state.create_success = false,
+            state.created_product = null 
         }, 
         reset_update_success:(state)=>{
             state.update_success = false
         }, 
+        reset_upload_image_success: (state) => {
+            state.upload_image_success = false
+        },
+        reset_upload_model_success: (state) => {
+            state.upload_model_success = false
+        },
         set_current_view: (state, action)=>{
             state.current_view = action.payload
         },
@@ -33,6 +43,7 @@ export const product_slice = createSlice({
     },
     extraReducers:(builder)=>{
         builder
+            // Fecth products
             .addCase(fetch_products_thunk.pending, (state) => {
                 state.is_loading = true
                 state.error = null
@@ -56,10 +67,17 @@ export const product_slice = createSlice({
             })
             .addCase(create_products_thunk.fulfilled, (state, action) => {
                 state.products.push(action.payload)
-                state.create_success = true
+                state.create_success = true,
+                state.created_product = action.payload  // Guarda el producto creado
             })
             .addCase(create_products_thunk.rejected, (state, action) => {
                 state.error = action.payload
+            })
+            .addCase(upload_image_thunk.fulfilled, (state, action) => {
+                state.upload_image_success = true
+            })
+            .addCase(upload_model_thunk.fulfilled, (state, action) => {
+                state.upload_model_success = true
             })
             .addCase(update_product_thunk.pending, (state) => {
                 state.is_loading = true
@@ -78,6 +96,8 @@ export const product_slice = createSlice({
 export const {
     reset_create_success,
     reset_update_success,
+    reset_upload_image_success,
+    reset_upload_model_success,
     set_current_view,
     set_current_product,
     reset_current_product

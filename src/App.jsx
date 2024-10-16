@@ -7,19 +7,19 @@ import { fetch_products_thunk } from './redux/thunks/product_thunk'
 
 export const App = () => {
   const dispatch = useDispatch()
-  const { products } = useSelector((state) => state.product_slice)
+  const { products, is_loading } = useSelector((state) => state.product_slice)
 
+  // useEffect para verificar la sesión del usuario
   useEffect(() => {
-    // Verifica si hay una sesión activa
     dispatch(check_user_session())
   }, [dispatch])
 
+  // useEffect para cargar productos
   useEffect(() => {
-    // Cargar productos si no están ya en el store
-    if (products.length === 0) {
+    if (!is_loading && products.length === 0) {
       dispatch(fetch_products_thunk())
     }
-  }, [dispatch, products])
+  }, [dispatch, products.length, is_loading])
 
   return (
     <>

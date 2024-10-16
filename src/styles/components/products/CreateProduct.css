@@ -3,27 +3,73 @@
     gap: 1em;
     margin-top: 1em;
     align-items: flex-start;
+    flex-direction: column;
 }
 
 .create_form_container {
-    background-color: aliceblue;
+    background-color: #f1f1f1;
     border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    row-gap: 1em;
-    width: 32em;
-    height: fit-content;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-areas:
+        'form_title form_title form_title form_title'
+        'name category stock price '
+        'description description image model'
+        'button button button button';
+    gap: 1em;
+    width: 95%;
+    padding: 2em;
+}
+
+.create_form_container>.form_title {
+    grid-area: form_title;
+}
+
+.create_form_container>.name {
+    grid-area: name;
+    width: 16em;
+}
+
+.create_form_container>.description {
+    grid-area: description;
+    width: 35em;
+}
+
+.create_form_container>.price {
+    grid-area: price;
+    width: 18.5em;
+}
+
+.create_form_container>.stock {
+    grid-area: stock;
+    width: 18.5em;
+}
+
+.create_form_container>.category {
+    grid-area: category;
+    width: 17em;
+}
+
+.create_form_container>.image {
+    grid-area: image;
+    width: 18.5em;
+    height: 4em;
+}
+
+.create_form_container>.model {
+    grid-area: model;
+    width: 18.5em;
+    height: 4em;
+}
+
+.create_form_container>.submit_button {
+    grid-area: button;
 }
 
 .create_form_container>h3 {
     color: #576574;
     font-weight: 500;
-    width: calc(100% - 4em);
+    font-size: 1.4em;
 }
 
 .preview_product {
@@ -43,4 +89,21 @@
     font-weight: 500;
     width: calc(100% - 4em);
     padding-bottom: 1em;
+}
+
+.file-product-container {
+    background-color: aliceblue;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    width: 32em;
+    padding: 2em;
+    position: absolute;
+    right: -18em;
+    /* Ajusta este valor según lo necesario para mover el contenedor a la derecha */
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }

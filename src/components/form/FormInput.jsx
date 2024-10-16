@@ -1,25 +1,26 @@
 import '../../styles/components/FormInput.css'
-export const FormInput = ({ type, placeholder, label, value, name, onChange, min, max }) => {
+export const FormInput = ({ className, type, placeholder, label, value, name, onChange, min, max, accept }) => {
     return (
-        <div className='form_control'>
+        <div className={`form_control ${className}`}>
             <label className='form_label'>{label}</label>
             <input
                 type={type}
                 className='form_input'
                 placeholder={placeholder}
                 name={name}
-                value={value}
+                {...(type !== 'file' ? { value: value } : {})}
                 onChange={onChange}
                 min={min}
                 max={max}
+                accept={accept}
                 required />
         </div>
     )
 }
 
-export const FormTextArea = ({ placeholder, label, value, name, onChange }) => {
+export const FormTextArea = ({ placeholder, label, value, name, onChange, className }) => {
     return (
-        <div className='form_control'>
+        <div className={`form_control ${className}`}>
             <label className='form_label'>{label}</label>
             <textarea
                 className='form_textarea'
@@ -32,9 +33,9 @@ export const FormTextArea = ({ placeholder, label, value, name, onChange }) => {
     )
 }
 
-export const FormSelect = ({ label, value, name, onChange, options, }) => {
+export const FormSelect = ({ label, value, name, onChange, options, className }) => {
     return (
-        <div className='form_control'>
+        <div className={`form_control ${className}`}>
             <label className='form_label'>{label}</label>
             <select
                 className='form_select'

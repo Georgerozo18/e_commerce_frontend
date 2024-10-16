@@ -6,8 +6,6 @@ import { OrthographicCamera } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 
-
-
 const Model = ({ modelUrl }) => {
     const gltf = useLoader(GLTFLoader, modelUrl)
     return <primitive object={gltf.scene} position={[0, -0.3, 0]} />

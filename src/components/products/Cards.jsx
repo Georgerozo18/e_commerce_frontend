@@ -8,6 +8,7 @@ import temp_image from '../../assets/images/temp_image.png'
 import temp_model from '../../assets/models/ford_mustang.glb'
 
 export const MasonryGrid = ({ products, springStyles }) => {
+    // console.log(products)
     const [hoveredIndex, setHoveredIndex] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState(null)
