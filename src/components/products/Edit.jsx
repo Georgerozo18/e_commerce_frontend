@@ -4,6 +4,7 @@ import { FormButton, FormContainer, FormInput, FormSelect, FormTextArea } from "
 import { fetch_products_thunk, update_product_thunk } from "../../redux/thunks/product_thunk"
 import { reset_current_product, reset_update_success, set_current_view } from "../../redux/slices"
 import '../../styles/components/products/EditProduct.css'
+import { Card } from "./Card"
 
 export const Edit = () => {
     const dispatch = useDispatch()
@@ -125,11 +126,14 @@ export const Edit = () => {
 
             <div className="preview_product">
                 <h3>Product Preview</h3>
-                <p><strong>Name:</strong> {productData.name || 'N/A'} </p>
-                <p><strong>Description:</strong> {productData.description || 'N/A'} </p>
-                <p><strong>Price:</strong> {productData.price ? `$${productData.price}` : 'N/A'} </p>
-                <p><strong>Stock:</strong> {productData.stock || 'N/A'} </p>
-                <p><strong>Category:</strong> {selectedCategory ? selectedCategory.name : 'N/A'} </p>
+                <Card
+                    product={productData}
+                    springStyle={{}}
+                    isHovered={false}
+                    onMouseEnter={() => { }}
+                    onMouseLeave={() => { }}
+                    onClick={() => { }}
+                />
             </div>
         </div>
     )

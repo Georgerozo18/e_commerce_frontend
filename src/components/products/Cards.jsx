@@ -1,12 +1,9 @@
-import { animated } from '@react-spring/web'
 import { useState, startTransition, Suspense } from 'react'
 import '../../styles/components/products/MasonryGrid.css'
 import Masonry from 'react-masonry-css'
 import { Modal } from './Modal'
 import { Model3D } from './Model3D'
-import temp_image from '../../assets/images/temp_image.png'
-import temp_model from '../../assets/models/ford_mustang.glb'
-
+import { Card } from './Card'
 export const MasonryGrid = ({ products, springStyles }) => {
     // console.log(products)
     const [hoveredIndex, setHoveredIndex] = useState(null)
@@ -35,24 +32,15 @@ export const MasonryGrid = ({ products, springStyles }) => {
                     const isHovered = hoveredIndex === index
 
                     return (
-                        <animated.div
+                        <Card
                             key={product._id}
-                            style={{
-                                ...springStyles[index],
-                                transform: isHovered ? 'scale(1.05)' : 'scale(1)',
-                                zIndex: isHovered ? 1 : 0,
-                                transition: 'transform 0.4s ease'
-                            }}
-                            className="masonry-item"
+                            product={product}
+                            springStyle={springStyles[index]}
+                            isHovered={isHovered}
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
-                            onClick={() => openModal(product)}>
-                            <p className='category_card'>{product.category.name}</p>
-                            <h3 className='title_card'>{product.name}</h3>
-                            <img className='image_card' src={temp_image} />
-                            <p className='description_card'>{product.description}</p>
-                            <p className='price_card'>${product.price}</p>
-                        </animated.div>
+                            onClick={() => openModal(product)}
+                        />
                     )
                 })}
             </Masonry>
@@ -62,10 +50,17 @@ export const MasonryGrid = ({ products, springStyles }) => {
                     <>
                         <h2 className='title_card'>{selectedProduct.name}</h2>
                         <p className='description_card'>{selectedProduct.description}</p>
-                        {/* Suspense para cargar el modelo 3D */}
-                        <Suspense fallback={<div>Loading 3D model...</div>}>
-                            <Model3D modelUrl={temp_model} />
-                        </Suspense>
+
+                        {/* Verificar si el producto tiene un modelo 3D */}
+                        {selectedProduct.model ? (
+                            <Suspense fallback={<div>Loading 3D model...</div>}>
+                                <Model3D modelUrl={selectedProduct.model} />
+                            </Suspense>
+                        ) : (
+                            <div className='no-model-message'>
+                                No 3D model available for this product.
+                            </div>
+                        )}
                     </>
                 )}
             </Modal>
