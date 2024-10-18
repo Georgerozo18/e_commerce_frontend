@@ -2,8 +2,8 @@ import { useState, startTransition, Suspense } from 'react'
 import '../../styles/components/products/MasonryGrid.css'
 import Masonry from 'react-masonry-css'
 import { Modal } from './Modal'
-import { Model3D } from './Model3D'
 import { Card } from './Card'
+import { ModalContent } from './ModalContent'
 export const MasonryGrid = ({ products, springStyles }) => {
     // console.log(products)
     const [hoveredIndex, setHoveredIndex] = useState(null)
@@ -46,23 +46,7 @@ export const MasonryGrid = ({ products, springStyles }) => {
             </Masonry>
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                {selectedProduct && (
-                    <>
-                        <h2 className='title_card'>{selectedProduct.name}</h2>
-                        <p className='description_card'>{selectedProduct.description}</p>
-
-                        {/* Verificar si el producto tiene un modelo 3D */}
-                        {selectedProduct.model ? (
-                            <Suspense fallback={<div>Loading 3D model...</div>}>
-                                <Model3D modelUrl={selectedProduct.model} />
-                            </Suspense>
-                        ) : (
-                            <div className='no-model-message'>
-                                No 3D model available for this product.
-                            </div>
-                        )}
-                    </>
-                )}
+                <ModalContent selectedProduct={selectedProduct} />
             </Modal>
         </>
     )

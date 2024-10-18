@@ -25,7 +25,8 @@
     "react-router-dom": "^6.26.2",
     "serve": "^14.2.3",
     "three": "^0.169.0",
-    "three-stdlib": "^2.33.0"
+    "three-stdlib": "^2.33.0",
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

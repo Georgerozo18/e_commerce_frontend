@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { create_products_thunk, fetch_products_thunk, upload_image_thunk, upload_model_thunk } from "../../redux/thunks/product_thunk";
-import { FormButton, FormContainer, FormInput, FormSelect, FormTextArea } from "../form";
-import '../../styles/components/products/CreateProduct.css';
-import { reset_create_success } from "../../redux/slices";
-import { Card } from "./Card";
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { create_products_thunk, fetch_products_thunk, upload_image_thunk, upload_model_thunk } from "../../redux/thunks/product_thunk"
+import { FormButton, FormContainer, FormInput, FormSelect, FormTextArea } from "../form"
+import '../../styles/components/products/CreateProduct.css'
+import { reset_create_success } from "../../redux/slices"
+import { Card } from "./Card"
 
 export const Create = () => {
-    const dispatch = useDispatch();
-    const { create_success, created_product } = useSelector((state) => state.product_slice);
+    const dispatch = useDispatch()
+    const { create_success, created_product } = useSelector((state) => state.product_slice)
 
-    const [isUploading, setIsUploading] = useState(false);
+    const [isUploading, setIsUploading] = useState(false)
     const [productData, setProductData] = useState({
         name: '',
         description: '',
@@ -19,7 +19,7 @@ export const Create = () => {
         category: '', // Este valor debe ser un string, por ejemplo el _id de la categoría
         image: null,
         model: null
-    });
+    })
 
     const categories = [
         {
@@ -42,18 +42,18 @@ export const Create = () => {
             "name": "Scale 1/18 Motorbikes Plus Ultra 2",
             "description": "collection motorbikes approximately 28 cm wide, opening doors and movement on the steering wheel plus ultra, full full",
         }
-    ];
+    ]
 
     // Manejar cambios en los campos del formulario
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setProductData({ ...productData, [name]: value });
-    };
+        const { name, value } = e.target
+        setProductData({ ...productData, [name]: value })
+    }
 
     // Enviar el formulario
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(productData);
+        e.preventDefault()
+        console.log(productData)
 
         if (productData.name && productData.description && productData.price && productData.stock && productData.category) {
             const productsDetails = {
@@ -62,36 +62,36 @@ export const Create = () => {
                 price: productData.price,
                 stock: productData.stock,
                 category: productData.category, // Aquí envías el _id de la categoría
-            };
-            dispatch(create_products_thunk(productsDetails));
+            }
+            dispatch(create_products_thunk(productsDetails))
         } else {
-            alert('All fields, except the image and model are required.');
+            alert('All fields, except the image and model are required.')
         }
-    };
+    }
 
     useEffect(() => {
         if (create_success && created_product) {
-            alert('Product created successfully! Now uploading files...');
-            console.log('Created Product:', created_product);
+            alert('Product created successfully! Now uploading files...')
+            console.log('Created Product:', created_product)
 
-            const { _id } = created_product.product;
-            setIsUploading(true);
+            const { _id } = created_product.product
+            setIsUploading(true)
 
-            const uploadPromises = [];
+            const uploadPromises = []
 
             if (productData.image) {
-                alert('uploading image...');
-                uploadPromises.push(dispatch(upload_image_thunk({ productId: _id, image: productData.image })));
+                alert('uploading image...')
+                uploadPromises.push(dispatch(upload_image_thunk({ productId: _id, image: productData.image })))
             }
             if (productData.model) {
-                alert('uploading model...');
-                uploadPromises.push(dispatch(upload_model_thunk({ productId: _id, model: productData.model })));
+                alert('uploading model...')
+                uploadPromises.push(dispatch(upload_model_thunk({ productId: _id, model: productData.model })))
             }
 
             Promise.all(uploadPromises).then(() => {
-                dispatch(reset_create_success());
-                setIsUploading(false);
-            });
+                dispatch(reset_create_success())
+                setIsUploading(false)
+            })
 
             setProductData({
                 name: '',
@@ -101,17 +101,17 @@ export const Create = () => {
                 category: '',
                 image: null,
                 model: null
-            });
+            })
 
-            dispatch(fetch_products_thunk());
+            dispatch(fetch_products_thunk())
         }
-    }, [create_success, created_product, dispatch, productData.image, productData.model]);
+    }, [create_success, created_product, dispatch, productData.image, productData.model])
 
     // Buscar el nombre de la categoría en base al ID seleccionado
-    const selectedCategory = categories.find(cat => cat._id === productData.category);
+    const selectedCategory = categories.find(cat => cat._id === productData.category)
 
     // Condición para mostrar la vista previa solo si hay datos
-    const isPreviewVisible = productData.name || productData.description || productData.price || productData.stock || productData.category;
+    const isPreviewVisible = productData.name || productData.description || productData.price || productData.stock || productData.category
 
     return (
         <div className="create-product-container">
@@ -189,5 +189,5 @@ export const Create = () => {
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
