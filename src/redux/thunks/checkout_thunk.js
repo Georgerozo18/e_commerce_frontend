@@ -7,7 +7,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 export const checkout_thunk = createAsyncThunk(
     'checkout/checkout',
-    async (cart, { rejectWithValue, fulfillWithValue, dispatch }) => {
+    async ({cart,navigate }, { rejectWithValue, fulfillWithValue, dispatch }) => {
         try {
             const response = await fetch(`${apiUrl}/checkout`, {
                 method: 'POST',
@@ -20,8 +20,16 @@ export const checkout_thunk = createAsyncThunk(
             const data = await response.json()
 
             if (!response.ok) {
-                toastr.error(data.message || 'Checkout failed')
-                dispatch(reset_cart())
+                // Si el token es inválido o falta, mostrar un mensaje de error con Toastr y redirigir
+                if (data.message === "Access token missing or invalid") {
+                    toastr.info('Please login to complete the purchase', 'Authentication Required')
+                    setTimeout(() => {
+                        navigate('/login')
+                    }, 3000) 
+                } else {
+                    toastr.error(data.message || 'Checkout failed')
+                    dispatch(reset_cart())
+                }
                 return rejectWithValue(data.message || 'Checkout failed')
             }
             // Despachar acción para obtener productos nuevamente

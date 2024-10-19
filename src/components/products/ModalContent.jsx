@@ -6,6 +6,15 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import '../../styles/components/products/ModalContent.css'
 import { useDispatch } from 'react-redux'
 import { add_to_cart } from '../../redux/slices/checkout/checkout_slice'
+import toastr from 'toastr'
+
+toastr.options = {
+    closeButton: true,
+    progressBar: true,
+    positionClass: 'toast-top-right',
+    timeOut: '3000',
+    extendedTimeOut: '1000',
+}
 
 export const ModalContent = ({ selectedProduct }) => {
     const dispatch = useDispatch()
@@ -13,7 +22,7 @@ export const ModalContent = ({ selectedProduct }) => {
 
     const handleAddToCart = (event) => {
         event.preventDefault()
-        // console.log('Adding to cart:', selectedProduct, 'Quantity:', quantity)
+        toastr.success(`${quantity} ${selectedProduct.name} added to cart!`, 'Product Added')
         dispatch(add_to_cart({ ...selectedProduct, quantity }))
     }
 

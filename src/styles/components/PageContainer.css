@@ -17,3 +17,9 @@
     display: grid;
     place-content: center;
 }
+
+.page_top {
+    display: grid;
+    align-items: start;
+    justify-items: center;
+}
