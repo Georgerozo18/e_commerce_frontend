@@ -2,7 +2,12 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { signout_user_thunk } from '../redux/thunks/login_thunk'
 import '../styles/pages/Navbar.css'
-import { reset_current_product, set_current_view } from '../redux/slices'
+import {
+    reset_current_product,
+    set_current_view,
+    reset_current_category,
+    set_current_category_view
+} from '../redux/slices'
 
 export const Navbar = () => {
     const { is_authenticated, user } = useSelector(state => state.login_slice)
@@ -23,6 +28,14 @@ export const Navbar = () => {
                     dispatch(reset_current_product())
                 )
         },
+        {
+            title: 'Categories',
+            navigateTo: 'admin/categories',
+            onClick: () =>
+                dispatch(set_current_category_view('list'),
+                    dispatch(reset_current_category())
+                )
+        }
     ]
 
     // Si el usuario es normal o no está autenticado, mostrar rutas estándar
@@ -30,7 +43,7 @@ export const Navbar = () => {
         { title: 'Home', navigateTo: '/' },
         { title: 'Shop', navigateTo: '/shop' },
         is_authenticated
-            ? { title: 'Profile', navigateTo: '/profile' }
+            ? {} //{ title: 'Profile', navigateTo: '/profile' }
             : { title: 'Sign up for free', navigateTo: '/login' },
     ]
 

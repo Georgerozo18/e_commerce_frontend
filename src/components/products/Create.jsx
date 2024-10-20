@@ -4,11 +4,12 @@ import { create_products_thunk, fetch_products_thunk, upload_image_thunk, upload
 import { FormButton, FormContainer, FormInput, FormSelect, FormTextArea } from "../form"
 import '../../styles/components/products/CreateProduct.css'
 import { reset_create_success } from "../../redux/slices"
-import { Card } from "./Card"
+import toastr from 'toastr'
 
 export const Create = () => {
     const dispatch = useDispatch()
     const { create_success, created_product } = useSelector((state) => state.product_slice)
+    const { categories } = useSelector((state) => state.category_slice)
 
     const [isUploading, setIsUploading] = useState(false)
     const [productData, setProductData] = useState({
@@ -16,33 +17,10 @@ export const Create = () => {
         description: '',
         price: '',
         stock: '',
-        category: '', // Este valor debe ser un string, por ejemplo el _id de la categoría
+        category: '',
         image: null,
         model: null
     })
-
-    const categories = [
-        {
-            "_id": "66e92676e8fb148563b8c94c",
-            "name": "Scale 1/18 Cars",
-            "description": "collection cars approximately 28 cm wide, opening doors and movement on the steering wheel",
-        },
-        {
-            "_id": "66e92676e8fb148563b8c94e",
-            "name": "Scale 1/43 Motorbikes",
-            "description": "Collectible motorcycles approximately 10 cm wide, some moving parts.",
-        },
-        {
-            "_id": "66e92676e8fb148563b8c94d",
-            "name": "Scale 1/64 Cars",
-            "description": "collection cars approximately 7cm wide, like hotweels style",
-        },
-        {
-            "_id": "66ecc6e9e4d8e7f1999b1f84",
-            "name": "Scale 1/18 Motorbikes Plus Ultra 2",
-            "description": "collection motorbikes approximately 28 cm wide, opening doors and movement on the steering wheel plus ultra, full full",
-        }
-    ]
 
     // Manejar cambios en los campos del formulario
     const handleInputChange = (e) => {
@@ -53,7 +31,7 @@ export const Create = () => {
     // Enviar el formulario
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(productData)
+        // console.log(productData)
 
         if (productData.name && productData.description && productData.price && productData.stock && productData.category) {
             const productsDetails = {
@@ -61,18 +39,17 @@ export const Create = () => {
                 description: productData.description,
                 price: productData.price,
                 stock: productData.stock,
-                category: productData.category, // Aquí envías el _id de la categoría
+                category: productData.category,
             }
             dispatch(create_products_thunk(productsDetails))
         } else {
-            alert('All fields, except the image and model are required.')
+            toastr.warning('All fields, except the image and model are required.')
         }
     }
 
     useEffect(() => {
         if (create_success && created_product) {
-            alert('Product created successfully! Now uploading files...')
-            console.log('Created Product:', created_product)
+            toastr.success('Product created successfully! Now uploading files...')
 
             const { _id } = created_product.product
             setIsUploading(true)
@@ -80,11 +57,11 @@ export const Create = () => {
             const uploadPromises = []
 
             if (productData.image) {
-                alert('uploading image...')
+                toastr.info('uploading image...')
                 uploadPromises.push(dispatch(upload_image_thunk({ productId: _id, image: productData.image })))
             }
             if (productData.model) {
-                alert('uploading model...')
+                toastr.info('uploading model...')
                 uploadPromises.push(dispatch(upload_model_thunk({ productId: _id, model: productData.model })))
             }
 
@@ -175,7 +152,7 @@ export const Create = () => {
                 <FormButton className='submit_button' textValue='Create Product' />
             </FormContainer>
 
-            {isPreviewVisible && (
+            {/* {isPreviewVisible && (
                 <div className="preview_product">
                     <h3>Product Preview</h3>
                     <Card
@@ -187,7 +164,7 @@ export const Create = () => {
                         onClick={() => { }}
                     />
                 </div>
-            )}
+            )} */}
         </div>
     )
 }

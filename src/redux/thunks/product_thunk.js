@@ -103,6 +103,7 @@ export const update_product_thunk = createAsyncThunk(
         try {
             const response = await fetch(`${apiUrl}/products/${productData._id}`, {
                 method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(productData),
                 credentials: 'include'
             })
@@ -112,7 +113,7 @@ export const update_product_thunk = createAsyncThunk(
                 return rejectWithValue(data.message || 'Failed to update product')
             }
 
-            return fulfillWithValue(data) // Devuelve el producto actualizado
+            return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.message || 'An error occurred')
         }

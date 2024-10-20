@@ -2,13 +2,14 @@
     background-color: aliceblue;
     border-radius: 0.5rem;
     position: absolute;
-    width: 20em;
+    width: fit-content;
     height: 3.4em;
     top: 3em;
     left: 50%;
     transform: translate(-50%, -50%);
     display: grid;
     align-items: center;
+    padding: 0 1em;
 }
 
 .navbar ul {
@@ -18,8 +19,8 @@
 .navbar_list {
     display: grid;
     grid-auto-flow: column;
-    justify-content: space-around;
     align-items: center;
+    column-gap: 2em;
 }
 
 .navbar_logout_button {

@@ -9,11 +9,11 @@ export const UserRouter = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/shop' element={<Shop />} />
             <Route path='/admin_login' element={<AdminLogin />} />
-            <Route path='/profile' element={
+            {/* <Route path='/profile' element={
                 <ProtectedRoute>
                     <Profile />
                 </ProtectedRoute>}
-            />
+            /> */}
             {/* Si el usuario intenta acceder a una ruta inválida, redirigir al home */}
             <Route path='*' element={<Navigate to='/' />} />
         </Routes>

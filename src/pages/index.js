@@ -1,6 +1,7 @@
 export * from './AdminLogin'
 export * from './AdminDashboard'
 export * from './AdminProducts'
+export * from './AdminCategories'
 export * from './Home'
 export * from './Login'
 export * from './Navbar'

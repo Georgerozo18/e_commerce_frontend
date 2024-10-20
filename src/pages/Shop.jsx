@@ -49,8 +49,8 @@ export const Shop = () => {
                             <p> ${totalAmount.toFixed(2)}</p>
                         </div>
                         <div className='checkout_button_container'>
-                            <Button extra_class='info_success' textValue={is_loading ? 'Processing...' : 'Checkout'} onClick={handleCheckout} />
                             <Button extra_class='info_alert' textValue={'Clear Cart'} onClick={handleClearCart} />
+                            <Button extra_class='info_success' textValue={is_loading ? 'Processing...' : 'Checkout'} onClick={handleCheckout} />
                         </div>
                     </>
                 )}

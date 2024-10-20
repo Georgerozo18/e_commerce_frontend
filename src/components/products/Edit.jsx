@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { FormButton, FormContainer, FormInput, FormSelect, FormTextArea } from "../form"
 import { fetch_products_thunk, update_product_thunk } from "../../redux/thunks/product_thunk"
-import { reset_current_product, reset_update_success, set_current_view } from "../../redux/slices"
+import { reset_update_success, set_current_view } from "../../redux/slices"
 import '../../styles/components/products/EditProduct.css'
-import { Card } from "./Card"
+// import { Card } from "./Card"
+import toastr from "toastr"
 
 export const Edit = () => {
     const dispatch = useDispatch()
@@ -55,14 +56,14 @@ export const Edit = () => {
                 dispatch(fetch_products_thunk())
             })
         } else {
-            alert('All fields are required.')
+            toastr.warning('All fields are required.')
         }
     }
 
     // Limpiar el formulario y redirigir cuando el producto se haya creado
     useEffect(() => {
         if (update_success) {
-            alert('Product updated successfully!')
+            toastr.success('Product updated successfully!')
             dispatch(reset_update_success())
             dispatch(set_current_view('list'))
         }
@@ -81,7 +82,7 @@ export const Edit = () => {
         }
     }, [current_product])
 
-    const selectedCategory = categories.find(cat => cat._id === productData.category)
+    // const selectedCategory = categories.find(cat => cat._id === productData.category)
 
     return (
         <div className="edit-product-container">
@@ -124,7 +125,7 @@ export const Edit = () => {
                 <FormButton textValue='Update Product' />
             </FormContainer>
 
-            <div className="preview_product">
+            {/* <div className="preview_product">
                 <h3>Product Preview</h3>
                 <Card
                     product={productData}
@@ -134,7 +135,7 @@ export const Edit = () => {
                     onMouseLeave={() => { }}
                     onClick={() => { }}
                 />
-            </div>
+            </div> */}
         </div>
     )
 }
