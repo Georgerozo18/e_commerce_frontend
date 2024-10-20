@@ -23,7 +23,7 @@ export const ListTable = ({ onAction }) => {
     return (
         <div className='product_list_container'>
             <button
-                className="icon_button create_button"
+                className="icon_button create_button_product"
                 onClick={() => onAction('create')} >
                 <FontAwesomeIcon icon={faCirclePlus} /> Create Product
             </button>

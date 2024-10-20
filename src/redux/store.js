@@ -4,7 +4,8 @@ import {
     signup_slice, 
     product_slice,
     checkout_slice,
-    category_slice
+    category_slice,
+    sale_slice,
 } from './slices'
 
 
@@ -14,6 +15,7 @@ export const store = configureStore({
         signup_slice:signup_slice.reducer,
         checkout_slice:checkout_slice.reducer,
         product_slice:product_slice.reducer,
-        category_slice:category_slice.reducer
+        category_slice:category_slice.reducer,
+        sale_slice:sale_slice.reducer
     }
 })

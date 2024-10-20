@@ -1,10 +1,11 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import { set_logout } from '../slices/login/login_slice'
+import { fetch_sales_thunk } from './sale_thunk'
 const apiUrl = import.meta.env.VITE_API_URL
 
 export const signin_user_thunk = createAsyncThunk(
     'login_slice/login_user',
-    async(credentials, {rejectWithValue})=>{
+    async(credentials, {rejectWithValue, dispatch})=>{
         const { username, password, authRoute } = credentials
         try{
             const response = await fetch(`${apiUrl}${authRoute}`,{
@@ -17,7 +18,7 @@ export const signin_user_thunk = createAsyncThunk(
             const contentType = response.headers.get('content-type')
             // Si la respuesta no es JSON, lanzar un error
             if (!contentType || !contentType.includes('application/json')) {
-                const errorText = await response.text() // Leer el texto del HTML de error
+                const errorText = await response.text() 
                 throw new Error(`Unexpected response: ${errorText}`)
             }
 
@@ -25,6 +26,11 @@ export const signin_user_thunk = createAsyncThunk(
 
             if(!response.ok){
                 return rejectWithValue(data.message || 'Login failed')
+            }
+
+            // Verificar si el usuario es admin y despachar fetch_sales_thunk
+            if (data.user?.role === 'admin') {
+                dispatch(fetch_sales_thunk())
             }
 
             return data

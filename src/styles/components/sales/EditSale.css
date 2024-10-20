@@ -1,0 +1,33 @@
+.edit-sale-container {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+    align-items: flex-start;
+}
+
+.edit_form_container {
+    background-color: aliceblue;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    row-gap: 1em;
+    width: 32em;
+    height: fit-content;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.edit_form_container>h3 {
+    color: #576574;
+    font-weight: 500;
+    width: calc(100% - 4em);
+}
+
+.preview_sale>h3 {
+    font-weight: 500;
+    width: calc(100% - 4em);
+    padding-bottom: 1em;
+}

@@ -4,6 +4,7 @@ import {
     check_user_session, 
     signout_user_thunk 
 } from "../../thunks/login_thunk"
+import { fetch_sales_thunk } from "../../thunks/sale_thunk"
 
 const initialState = {
     is_flipped: false,
@@ -13,7 +14,7 @@ const initialState = {
     signin_error:null,
     user:null,
     is_authenticated:false
-}
+} 
 
 export const login_slice = createSlice({
     name:'login_slice',

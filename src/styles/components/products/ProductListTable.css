@@ -113,9 +113,9 @@
     font-size: 1.2em;
 }
 
-.create_button {
+.create_button_product {
     color: #7ab317;
-    background-color: aliceblue;
+    background-color: aliceblue !important;
     padding: 0.5em;
     border-radius: 0.5em;
 }

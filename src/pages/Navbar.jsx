@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { signout_user_thunk } from '../redux/thunks/login_thunk'
 import '../styles/pages/Navbar.css'
 import {
-    reset_current_product,
     set_current_view,
+    set_current_category_view,
+    set_current_sale_view,
+    reset_current_product,
     reset_current_category,
-    set_current_category_view
+    reset_current_sale,
 } from '../redux/slices'
 
 export const Navbar = () => {
@@ -34,6 +36,14 @@ export const Navbar = () => {
             onClick: () =>
                 dispatch(set_current_category_view('list'),
                     dispatch(reset_current_category())
+                )
+        },
+        {
+            title: 'Sales',
+            navigateTo: 'admin/sales',
+            onClick: () =>
+                dispatch(set_current_sale_view('list'),
+                    dispatch(reset_current_sale())
                 )
         }
     ]
