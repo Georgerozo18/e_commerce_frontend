@@ -1,15 +1,17 @@
-import { Route, Routes, Navigate } from 'react-router-dom'
-import { Login, Home, Shop, Profile } from '../pages'
-import { ProtectedRoute } from './ProtectedRoute'
+import { useSelector } from 'react-redux'
+import { AdminRouter, UserRouter } from './'
+import { SecretSequence } from '../components/SecretSequence'
+
 
 export const AppRouter = () => {
+    const { user } = useSelector(state => state.login_slice)
+    const secretSequence = import.meta.env.VITE_SECRET_SEQUENCE.split('')
+
+    // Mostrar rutas dependiendo del rol del usuario, incluyendo el SecretSequence
     return (
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/shop' element={<Shop />} />
-            <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-            <Route path='*' element={<Navigate to={'/'} />} />
-        </Routes>
+        <>
+            <SecretSequence sequence={secretSequence} />
+            {user?.role === 'admin' ? <AdminRouter /> : <UserRouter />}
+        </>
     )
 }

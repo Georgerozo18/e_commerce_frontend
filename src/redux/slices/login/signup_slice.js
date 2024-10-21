@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { signup_user_thunk } from "../../thunks/signup/signup_thunk"
+import { signup_user_thunk } from "../../thunks/signup_thunk"
 
 const initialState = {
     is_loading:false,

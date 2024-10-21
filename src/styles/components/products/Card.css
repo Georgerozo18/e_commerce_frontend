@@ -1,0 +1,59 @@
+.masonry-item {
+    background: aliceblue;
+    font-weight: 500;
+    color: #576574;
+    padding: 20px;
+    border-radius: 8px;
+    break-inside: avoid;
+    transition: transform 0.2s;
+    cursor: pointer;
+    width: 12em;
+    height: fit-content;
+    margin-bottom: 2em;
+}
+
+.category_card {
+    color: rgb(231, 44, 75);
+    font-weight: 400;
+    font-size: 0.8em;
+}
+
+.title_card {
+    font-size: calc(1.5 * 100%);
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.2;
+    color: #576574;
+}
+
+.description_card {
+    color: rgb(59, 59, 59);
+    font-weight: 400;
+    font-size: 0.75em;
+}
+
+.price_card {
+    color: #00d530;
+    font-weight: bold;
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: aliceblue;
+    padding: 0 1em;
+    border-radius: 1em;
+    font-size: 1.2em;
+    z-index: 1;
+}
+
+.image_card {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image_card:hover {
+    transform: scale(1.05);
+}

@@ -1,7 +1,14 @@
 .error_message {
     color: rgb(205, 77, 105);
     position: absolute;
+}
+
+.normal_error_position {
     bottom: 6.8em;
+}
+
+.altered_error_position {
+    bottom: 5.6em;
 }
 
 .success_message {

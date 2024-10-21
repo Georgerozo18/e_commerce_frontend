@@ -1,0 +1,60 @@
+/* Fondo oscuro para cubrir el resto de la página */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* El contenedor del modal */
+.modal {
+    background-color: aliceblue;
+    padding: 1em;
+    border-radius: 8px;
+    max-width: 700px;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: grid;
+    row-gap: 1em;
+}
+
+/* Estilo del botón para cerrar el modal */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff5c5c;
+    /* Color de fondo del botón */
+    color: white;
+    /* Color del texto */
+    border: none;
+    /* Sin borde */
+    padding: 8px 12px;
+    /* Espaciado del botón */
+    cursor: pointer;
+    /* Cursor de puntero */
+    border-radius: 4px;
+    /* Bordes redondeados */
+    font-size: 14px;
+    /* Tamaño de fuente */
+}
+
+.close-button:hover {
+    background-color: #ff3838;
+    /* Color al pasar el mouse */
+}
+
+.no-model-message {
+    display: block;
+    width: 700px;
+    height: 350px;
+    touch-action: auto;
+}

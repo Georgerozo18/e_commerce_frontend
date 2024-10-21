@@ -20,3 +20,31 @@
     height: 2em;
     width: calc(100% - 0.5em);
 }
+
+.form_textarea {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.25em;
+    color: rgb(44, 62, 80);
+    font-size: 1.1em;
+    padding: 0px 0px 0px 0.5em;
+    outline: none;
+    height: 5em;
+    width: calc(100% - 0.5em);
+    resize: none;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.form_select {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.25em;
+    color: rgb(44, 62, 80);
+    font-size: 1.1em;
+    padding: 0px 0px 0px 0.5em;
+    outline: none;
+    height: 2em;
+    width: calc(100% - 0.5em);
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}

@@ -1,0 +1,10 @@
+.tooltip {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #808080;
+    color: #282828;
+    padding: 8px;
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
