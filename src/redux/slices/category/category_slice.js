@@ -4,6 +4,7 @@ import { fetch_categories_thunk, delete_category_thunk, create_category_thunk, u
 const initialState = {
     categories: [],
     is_loading_category: false,
+    categories_loaded: false,
     create_success: false,
     update_success: false,
     current_view: 'list',
@@ -32,6 +33,9 @@ export const category_slice  = createSlice({
         reset_current_category: (state) => {
             state.current_category = null
         },
+        set_categories_loaded: (state, action)=>{
+            state.categories_loaded = action.payload
+        }
     },
     extraReducers:(builder)=>{
         builder
@@ -43,6 +47,7 @@ export const category_slice  = createSlice({
             .addCase(fetch_categories_thunk.fulfilled, (state, action) => {
                 state.is_loading_category = false
                 state.categories = action.payload
+                state.categories_loaded = true
             })
             .addCase(fetch_categories_thunk.rejected, (state, action) => {
                 state.is_loading_category = false
@@ -87,5 +92,6 @@ export const {
     reset_update_category_success,
     set_current_category_view,
     set_current_category,
-    reset_current_category
+    reset_current_category,
+    set_categories_loaded
 } = category_slice.actions

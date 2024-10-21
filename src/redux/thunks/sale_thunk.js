@@ -1,6 +1,27 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 const apiUrl = import.meta.env.VITE_API_URL
 
+// Fetch sales statistics
+export const fetch_sales_stats_thunk = createAsyncThunk(
+    'sales/fetch_sales_stats',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await fetch(`${apiUrl}/sales/stats`, {
+                credentials: 'include',
+            })
+            const data = await response.json()
+
+            if (!response.ok) {
+                return rejectWithValue(data.message || 'Failed to fetch sales statistics')
+            }
+
+            return data
+        } catch (error) {
+            return rejectWithValue(error.message || 'An error occurred')
+        }
+    }
+)
+
 // Fetch all sales
 export const fetch_sales_thunk = createAsyncThunk(
     'sales/fetch_sales',

@@ -1,4 +1,13 @@
 .products_container {
     width: inherit;
     height: calc(100vh - 8.5em);
+    position: relative;
+}
+
+.home_message {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-size: 2em;
 }

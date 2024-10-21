@@ -26,14 +26,13 @@ export const Home = () => {
     return (
         <PageContainer
             background={'radial-gradient(circle, rgb(205 77 105) 50%, rgb(154 42 60) 100%)'}>
-            <h2>Home Page</h2>
             <div className='products_container'>
                 {
                     is_loading ? (<p>Loading products...</p>)
                         : error ? (<p>Error: {error}</p>)
                             : products.length > 0 ? (
                                 <MasonryGrid products={products} springStyles={springStyles} />
-                            ) : (<p>No products available</p>)
+                            ) : (<p className='home_message'>No products available!</p>)
                 }
             </div>
         </PageContainer>

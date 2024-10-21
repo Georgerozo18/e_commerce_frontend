@@ -4,11 +4,11 @@
     display: flex;
     justify-items: center;
     flex-direction: column;
-    align-content: center;
     row-gap: 1em;
     width: 28em;
     height: 26em;
     padding: 1em 1.5em;
+    position: relative;
 }
 
 .shop_page_title {
@@ -83,7 +83,13 @@
 }
 
 .checkout_message {
-    color: #576574
+    color: #576574;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-size: 2em;
+    width: max-content;
 }
 
 .checkout_total_container {

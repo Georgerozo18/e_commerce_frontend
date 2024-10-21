@@ -4,6 +4,7 @@ import { fetch_products_thunk, delete_product_thunk, create_products_thunk, upda
 const initialState = {
     products: [],
     is_loading: false,
+    products_loaded: false,
     create_success: false,
     update_success: false,
     upload_image_success: false, 
@@ -39,6 +40,9 @@ export const product_slice = createSlice({
         },
         reset_current_product: (state) => {
             state.current_product = null
+        },
+        set_products_loaded: (state, action)=>{
+            state.products_loaded = action.payload
         }
     },
     extraReducers:(builder)=>{
@@ -51,6 +55,7 @@ export const product_slice = createSlice({
             .addCase(fetch_products_thunk.fulfilled, (state, action) => {
                 state.is_loading = false
                 state.products = action.payload
+                state.products_loaded = true
             })
             .addCase(fetch_products_thunk.rejected, (state, action) => {
                 state.is_loading = false
@@ -100,5 +105,6 @@ export const {
     reset_upload_model_success,
     set_current_view,
     set_current_product,
-    reset_current_product
+    reset_current_product,
+    set_products_loaded
 } = product_slice.actions

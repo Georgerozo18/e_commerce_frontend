@@ -1,6 +1,9 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import { set_logout } from '../slices/login/login_slice'
-import { fetch_sales_thunk } from './sale_thunk'
+import { fetch_sales_stats_thunk, fetch_sales_thunk } from './sale_thunk'
+import { fetch_products_thunk } from './product_thunk'
+import { fetch_categories_thunk } from './category_thunk'
+import { set_sales_loaded } from '../slices'
 const apiUrl = import.meta.env.VITE_API_URL
 
 export const signin_user_thunk = createAsyncThunk(
@@ -31,7 +34,11 @@ export const signin_user_thunk = createAsyncThunk(
             // Verificar si el usuario es admin y despachar fetch_sales_thunk
             if (data.user?.role === 'admin') {
                 dispatch(fetch_sales_thunk())
+                dispatch(fetch_sales_stats_thunk())
             }
+
+            dispatch(fetch_products_thunk())
+            dispatch(fetch_categories_thunk())
 
             return data
         } catch(error){

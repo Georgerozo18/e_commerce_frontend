@@ -29,8 +29,11 @@ export const Shop = () => {
             appTitle={'Page Three'}
             background={'radial-gradient(circle, #4E83A8 50%, #3A6C8A 100%)'}>
             <div className='shop_container'>
-                <h2 className='shop_page_title'>Checkout</h2>
-                <p className='shop_page_subtitle'>Shopping Bill</p>
+                {cart.length === 0 ? '' : (<>
+                    <h2 className='shop_page_title'>Checkout</h2>
+                    <p className='shop_page_subtitle'>Shopping Bill</p>
+                </>
+                )}
                 {cart.length === 0 ? (
                     <p className='checkout_message'>Your cart is empty</p>
                 ) : (

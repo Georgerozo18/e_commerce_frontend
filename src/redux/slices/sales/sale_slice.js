@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetch_sales_thunk, delete_sale_thunk, create_sale_thunk, update_sale_thunk } from '../../thunks/sale_thunk'
+import { fetch_sales_thunk, delete_sale_thunk, create_sale_thunk, update_sale_thunk, fetch_sales_stats_thunk } from '../../thunks/sale_thunk'
 
 const initialState = {
     sales: [],
+    sales_stats: { salesByDate: {} },
     is_loading_sale: false,
     sales_loaded: false,
     create_success: false,
@@ -10,7 +11,9 @@ const initialState = {
     current_view: 'list',
     error: null,
     current_sale: null,
-    created_sale: null
+    created_sale: null,
+    is_loading_stats: false,
+    stats_error: null
 }
 
 export const sale_slice  = createSlice({
@@ -52,6 +55,19 @@ export const sale_slice  = createSlice({
             .addCase(fetch_sales_thunk.rejected, (state, action) => {
                 state.is_loading_sale = false
                 state.error = action.payload
+            })
+            // Fetch sales stats
+            .addCase(fetch_sales_stats_thunk.pending, (state) => {
+                state.is_loading_stats = true
+                state.stats_error = null
+            })
+            .addCase(fetch_sales_stats_thunk.fulfilled, (state, action) => {
+                state.is_loading_stats = false
+                state.sales_stats = action.payload
+            })
+            .addCase(fetch_sales_stats_thunk.rejected, (state, action) => {
+                state.is_loading_stats = false
+                state.stats_error = action.payload
             })
             // Delete sale
             .addCase(delete_sale_thunk.fulfilled, (state, action) =>{
